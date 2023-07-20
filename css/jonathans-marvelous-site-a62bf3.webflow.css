@@ -1,0 +1,11 @@
+p {
+  margin-bottom: 10px;
+}
+
+.div-block {
+  padding: 26px 33px;
+}
+
+.div-block.color-bg {
+  background-color: #b9d1ff;
+}
