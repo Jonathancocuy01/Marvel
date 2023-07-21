@@ -1,7 +1,9 @@
 .filter {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    order: 1;
 }
 
 body {
-    background-color: aqua;
+    background-color: rgb(255, 196, 0);
 }
