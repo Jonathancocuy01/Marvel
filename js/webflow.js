@@ -8,9 +8,11 @@
  */
 
 (() => {
+  var __create = Object.create;
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
     get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
@@ -37,6 +39,14 @@
     }
     return to;
   };
+  var __toESM = (mod2, isNodeMode, target) => (target = mod2 != null ? __create(__getProtoOf(mod2)) : {}, __copyProps(
+    // If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod2 || !mod2.__esModule ? __defProp(target, "default", { value: mod2, enumerable: true }) : target,
+    mod2
+  ));
   var __toCommonJS = (mod2) => __copyProps(__defProp({}, "__esModule", { value: true }), mod2);
 
   // shared/render/plugins/BaseSiteModules/tram-min.js
@@ -1001,7 +1011,7 @@
       var $2 = window.jQuery;
       var $win = $2(window);
       var $doc = $2(document);
-      var isFunction = $2.isFunction;
+      var isFunction2 = $2.isFunction;
       var _ = Webflow._ = require_underscore_custom();
       var tram = Webflow.tram = require_tram_min() && $2.tram;
       var domready = false;
@@ -1021,11 +1031,11 @@
       };
       function bindModule(module3) {
         if (Webflow.env()) {
-          isFunction(module3.design) && $win.on("__wf_design", module3.design);
-          isFunction(module3.preview) && $win.on("__wf_preview", module3.preview);
+          isFunction2(module3.design) && $win.on("__wf_design", module3.design);
+          isFunction2(module3.preview) && $win.on("__wf_preview", module3.preview);
         }
-        isFunction(module3.destroy) && $win.on("__wf_destroy", module3.destroy);
-        if (module3.ready && isFunction(module3.ready)) {
+        isFunction2(module3.destroy) && $win.on("__wf_destroy", module3.destroy);
+        if (module3.ready && isFunction2(module3.ready)) {
           addReady(module3);
         }
       }
@@ -1040,10 +1050,10 @@
         primary.push(module3.ready);
       }
       function unbindModule(module3) {
-        isFunction(module3.design) && $win.off("__wf_design", module3.design);
-        isFunction(module3.preview) && $win.off("__wf_preview", module3.preview);
-        isFunction(module3.destroy) && $win.off("__wf_destroy", module3.destroy);
-        if (module3.ready && isFunction(module3.ready)) {
+        isFunction2(module3.design) && $win.off("__wf_design", module3.design);
+        isFunction2(module3.preview) && $win.off("__wf_preview", module3.preview);
+        isFunction2(module3.destroy) && $win.off("__wf_destroy", module3.destroy);
+        if (module3.ready && isFunction2(module3.ready)) {
           removeReady(module3);
         }
       }
@@ -1054,7 +1064,7 @@
       }
       Webflow.push = function(ready) {
         if (domready) {
-          isFunction(ready) && ready();
+          isFunction2(ready) && ready();
           return;
         }
         secondary.push(ready);
@@ -1152,7 +1162,7 @@
         Webflow.resize.up();
       };
       function callReady(readyFn) {
-        isFunction(readyFn) && readyFn();
+        isFunction2(readyFn) && readyFn();
       }
       function restoreModules() {
         destroyed = false;
@@ -1524,11 +1534,11 @@
   // node_modules/lodash/isObject.js
   var require_isObject = __commonJS({
     "node_modules/lodash/isObject.js"(exports2, module2) {
-      function isObject(value2) {
+      function isObject2(value2) {
         var type = typeof value2;
         return value2 != null && (type == "object" || type == "function");
       }
-      module2.exports = isObject;
+      module2.exports = isObject2;
     }
   });
 
@@ -1536,19 +1546,19 @@
   var require_isFunction = __commonJS({
     "node_modules/lodash/isFunction.js"(exports2, module2) {
       var baseGetTag = require_baseGetTag();
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var asyncTag = "[object AsyncFunction]";
       var funcTag = "[object Function]";
       var genTag = "[object GeneratorFunction]";
       var proxyTag = "[object Proxy]";
-      function isFunction(value2) {
-        if (!isObject(value2)) {
+      function isFunction2(value2) {
+        if (!isObject2(value2)) {
           return false;
         }
         var tag = baseGetTag(value2);
         return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
       }
-      module2.exports = isFunction;
+      module2.exports = isFunction2;
     }
   });
 
@@ -1601,9 +1611,9 @@
   // node_modules/lodash/_baseIsNative.js
   var require_baseIsNative = __commonJS({
     "node_modules/lodash/_baseIsNative.js"(exports2, module2) {
-      var isFunction = require_isFunction();
+      var isFunction2 = require_isFunction();
       var isMasked = require_isMasked();
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var toSource = require_toSource();
       var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
       var reIsHostCtor = /^\[object .+?Constructor\]$/;
@@ -1615,10 +1625,10 @@
         "^" + funcToString.call(hasOwnProperty).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
       );
       function baseIsNative(value2) {
-        if (!isObject(value2) || isMasked(value2)) {
+        if (!isObject2(value2) || isMasked(value2)) {
           return false;
         }
-        var pattern = isFunction(value2) ? reIsNative : reIsHostCtor;
+        var pattern = isFunction2(value2) ? reIsNative : reIsHostCtor;
         return pattern.test(toSource(value2));
       }
       module2.exports = baseIsNative;
@@ -2520,10 +2530,10 @@
   // node_modules/lodash/isArrayLike.js
   var require_isArrayLike = __commonJS({
     "node_modules/lodash/isArrayLike.js"(exports2, module2) {
-      var isFunction = require_isFunction();
+      var isFunction2 = require_isFunction();
       var isLength = require_isLength();
       function isArrayLike(value2) {
-        return value2 != null && isLength(value2.length) && !isFunction(value2);
+        return value2 != null && isLength(value2.length) && !isFunction2(value2);
       }
       module2.exports = isArrayLike;
     }
@@ -2809,9 +2819,9 @@
   // node_modules/lodash/_isStrictComparable.js
   var require_isStrictComparable = __commonJS({
     "node_modules/lodash/_isStrictComparable.js"(exports2, module2) {
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       function isStrictComparable(value2) {
-        return value2 === value2 && !isObject(value2);
+        return value2 === value2 && !isObject2(value2);
       }
       module2.exports = isStrictComparable;
     }
@@ -2907,7 +2917,7 @@
     "node_modules/lodash/memoize.js"(exports2, module2) {
       var MapCache = require_MapCache();
       var FUNC_ERROR_TEXT = "Expected a function";
-      function memoize(func, resolver) {
+      function memoize2(func, resolver) {
         if (typeof func != "function" || resolver != null && typeof resolver != "function") {
           throw new TypeError(FUNC_ERROR_TEXT);
         }
@@ -2920,21 +2930,21 @@
           memoized.cache = cache.set(key2, result) || cache;
           return result;
         };
-        memoized.cache = new (memoize.Cache || MapCache)();
+        memoized.cache = new (memoize2.Cache || MapCache)();
         return memoized;
       }
-      memoize.Cache = MapCache;
-      module2.exports = memoize;
+      memoize2.Cache = MapCache;
+      module2.exports = memoize2;
     }
   });
 
   // node_modules/lodash/_memoizeCapped.js
   var require_memoizeCapped = __commonJS({
     "node_modules/lodash/_memoizeCapped.js"(exports2, module2) {
-      var memoize = require_memoize();
+      var memoize2 = require_memoize();
       var MAX_MEMOIZE_SIZE = 500;
       function memoizeCapped(func) {
-        var result = memoize(func, function(key2) {
+        var result = memoize2(func, function(key2) {
           if (cache.size === MAX_MEMOIZE_SIZE) {
             cache.clear();
           }
@@ -3260,7 +3270,7 @@
   var require_toNumber = __commonJS({
     "node_modules/lodash/toNumber.js"(exports2, module2) {
       var baseTrim = require_baseTrim();
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var isSymbol = require_isSymbol();
       var NAN = 0 / 0;
       var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
@@ -3274,9 +3284,9 @@
         if (isSymbol(value2)) {
           return NAN;
         }
-        if (isObject(value2)) {
+        if (isObject2(value2)) {
           var other = typeof value2.valueOf == "function" ? value2.valueOf() : value2;
-          value2 = isObject(other) ? other + "" : other;
+          value2 = isObject2(other) ? other + "" : other;
         }
         if (typeof value2 != "string") {
           return value2 === 0 ? value2 : +value2;
@@ -3654,15 +3664,15 @@
       var global2 = require_global();
       var call = require_function_call();
       var isCallable = require_is_callable();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var TypeError2 = global2.TypeError;
       module2.exports = function(input, pref) {
         var fn, val2;
-        if (pref === "string" && isCallable(fn = input.toString) && !isObject(val2 = call(fn, input)))
+        if (pref === "string" && isCallable(fn = input.toString) && !isObject2(val2 = call(fn, input)))
           return val2;
-        if (isCallable(fn = input.valueOf) && !isObject(val2 = call(fn, input)))
+        if (isCallable(fn = input.valueOf) && !isObject2(val2 = call(fn, input)))
           return val2;
-        if (pref !== "string" && isCallable(fn = input.toString) && !isObject(val2 = call(fn, input)))
+        if (pref !== "string" && isCallable(fn = input.toString) && !isObject2(val2 = call(fn, input)))
           return val2;
         throw TypeError2("Can't convert object to primitive value");
       };
@@ -3789,7 +3799,7 @@
     "node_modules/core-js/internals/to-primitive.js"(exports2, module2) {
       var global2 = require_global();
       var call = require_function_call();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var isSymbol = require_is_symbol();
       var getMethod = require_get_method();
       var ordinaryToPrimitive = require_ordinary_to_primitive();
@@ -3797,7 +3807,7 @@
       var TypeError2 = global2.TypeError;
       var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
       module2.exports = function(input, pref) {
-        if (!isObject(input) || isSymbol(input))
+        if (!isObject2(input) || isSymbol(input))
           return input;
         var exoticToPrim = getMethod(input, TO_PRIMITIVE);
         var result;
@@ -3805,7 +3815,7 @@
           if (pref === void 0)
             pref = "default";
           result = call(exoticToPrim, input, pref);
-          if (!isObject(result) || isSymbol(result))
+          if (!isObject2(result) || isSymbol(result))
             return result;
           throw TypeError2("Can't convert object to primitive value");
         }
@@ -3832,9 +3842,9 @@
   var require_document_create_element = __commonJS({
     "node_modules/core-js/internals/document-create-element.js"(exports2, module2) {
       var global2 = require_global();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var document2 = global2.document;
-      var EXISTS = isObject(document2) && isObject(document2.createElement);
+      var EXISTS = isObject2(document2) && isObject2(document2.createElement);
       module2.exports = function(it) {
         return EXISTS ? document2.createElement(it) : {};
       };
@@ -3887,11 +3897,11 @@
   var require_an_object = __commonJS({
     "node_modules/core-js/internals/an-object.js"(exports2, module2) {
       var global2 = require_global();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var String2 = global2.String;
       var TypeError2 = global2.TypeError;
       module2.exports = function(argument) {
-        if (isObject(argument))
+        if (isObject2(argument))
           return argument;
         throw TypeError2(String2(argument) + " is not an object");
       };
@@ -3993,7 +4003,7 @@
       var NATIVE_WEAK_MAP = require_native_weak_map();
       var global2 = require_global();
       var uncurryThis = require_function_uncurry_this();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var createNonEnumerableProperty = require_create_non_enumerable_property();
       var hasOwn = require_has_own_property();
       var shared = require_shared_store();
@@ -4011,7 +4021,7 @@
       var getterFor = function(TYPE) {
         return function(it) {
           var state;
-          if (!isObject(it) || (state = get(it)).type !== TYPE) {
+          if (!isObject2(it) || (state = get(it)).type !== TYPE) {
             throw TypeError2("Incompatible receiver, " + TYPE + " required");
           }
           return state;
@@ -4915,7 +4925,7 @@
       var global2 = require_global();
       var isArray = require_is_array();
       var isConstructor = require_is_constructor();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var wellKnownSymbol = require_well_known_symbol();
       var SPECIES = wellKnownSymbol("species");
       var Array2 = global2.Array;
@@ -4925,7 +4935,7 @@
           C = originalArray.constructor;
           if (isConstructor(C) && (C === Array2 || isArray(C.prototype)))
             C = void 0;
-          else if (isObject(C)) {
+          else if (isObject2(C)) {
             C = C[SPECIES];
             if (C === null)
               C = void 0;
@@ -4974,7 +4984,7 @@
       var global2 = require_global();
       var fails = require_fails();
       var isArray = require_is_array();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var toObject = require_to_object();
       var lengthOfArrayLike = require_length_of_array_like();
       var createProperty = require_create_property();
@@ -4993,7 +5003,7 @@
       });
       var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport("concat");
       var isConcatSpreadable = function(O) {
-        if (!isObject(O))
+        if (!isObject2(O))
           return false;
         var spreadable = O[IS_CONCAT_SPREADABLE];
         return spreadable !== void 0 ? !!spreadable : isArray(O);
@@ -5971,7 +5981,7 @@
       var global2 = require_global();
       var isArray = require_is_array();
       var isConstructor = require_is_constructor();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var toAbsoluteIndex = require_to_absolute_index();
       var lengthOfArrayLike = require_length_of_array_like();
       var toIndexedObject = require_to_indexed_object();
@@ -5994,7 +6004,7 @@
             Constructor = O.constructor;
             if (isConstructor(Constructor) && (Constructor === Array2 || isArray(Constructor.prototype))) {
               Constructor = void 0;
-            } else if (isObject(Constructor)) {
+            } else if (isObject2(Constructor)) {
               Constructor = Constructor[SPECIES];
               if (Constructor === null)
                 Constructor = void 0;
@@ -6526,7 +6536,7 @@
       var $2 = require_export();
       var uncurryThis = require_function_uncurry_this();
       var hiddenKeys = require_hidden_keys();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var hasOwn = require_has_own_property();
       var defineProperty = require_object_define_property().f;
       var getOwnPropertyNamesModule = require_object_get_own_property_names();
@@ -6548,7 +6558,7 @@
         } });
       };
       var fastKey = function(it, create2) {
-        if (!isObject(it))
+        if (!isObject2(it))
           return typeof it == "symbol" ? it : (typeof it == "string" ? "S" : "P") + it;
         if (!hasOwn(it, METADATA)) {
           if (!isExtensible(it))
@@ -6696,14 +6706,14 @@
   var require_inherit_if_required = __commonJS({
     "node_modules/core-js/internals/inherit-if-required.js"(exports2, module2) {
       var isCallable = require_is_callable();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var setPrototypeOf = require_object_set_prototype_of();
       module2.exports = function($this, dummy, Wrapper) {
         var NewTarget, NewTargetPrototype;
         if (
           // it can work only with native `setPrototypeOf`
           setPrototypeOf && // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
-          isCallable(NewTarget = dummy.constructor) && NewTarget !== Wrapper && isObject(NewTargetPrototype = NewTarget.prototype) && NewTargetPrototype !== Wrapper.prototype
+          isCallable(NewTarget = dummy.constructor) && NewTarget !== Wrapper && isObject2(NewTargetPrototype = NewTarget.prototype) && NewTargetPrototype !== Wrapper.prototype
         )
           setPrototypeOf($this, NewTargetPrototype);
         return $this;
@@ -6724,7 +6734,7 @@
       var iterate = require_iterate();
       var anInstance = require_an_instance();
       var isCallable = require_is_callable();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var fails = require_fails();
       var checkCorrectnessOfIteration = require_check_correctness_of_iteration();
       var setToStringTag = require_set_to_string_tag();
@@ -6746,11 +6756,11 @@
               uncurriedNativeMethod(this, value2 === 0 ? 0 : value2);
               return this;
             } : KEY == "delete" ? function(key2) {
-              return IS_WEAK && !isObject(key2) ? false : uncurriedNativeMethod(this, key2 === 0 ? 0 : key2);
+              return IS_WEAK && !isObject2(key2) ? false : uncurriedNativeMethod(this, key2 === 0 ? 0 : key2);
             } : KEY == "get" ? function get(key2) {
-              return IS_WEAK && !isObject(key2) ? void 0 : uncurriedNativeMethod(this, key2 === 0 ? 0 : key2);
+              return IS_WEAK && !isObject2(key2) ? void 0 : uncurriedNativeMethod(this, key2 === 0 ? 0 : key2);
             } : KEY == "has" ? function has(key2) {
-              return IS_WEAK && !isObject(key2) ? false : uncurriedNativeMethod(this, key2 === 0 ? 0 : key2);
+              return IS_WEAK && !isObject2(key2) ? false : uncurriedNativeMethod(this, key2 === 0 ? 0 : key2);
             } : function set(key2, value2) {
               uncurriedNativeMethod(this, key2 === 0 ? 0 : key2, value2);
               return this;
@@ -7315,11 +7325,11 @@
   var require_promise_resolve = __commonJS({
     "node_modules/core-js/internals/promise-resolve.js"(exports2, module2) {
       var anObject = require_an_object();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var newPromiseCapability = require_new_promise_capability();
       module2.exports = function(C, x) {
         anObject(C);
-        if (isObject(x) && x.constructor === C)
+        if (isObject2(x) && x.constructor === C)
           return x;
         var promiseCapability = newPromiseCapability.f(C);
         var resolve2 = promiseCapability.resolve;
@@ -7379,7 +7389,7 @@
       var setSpecies = require_set_species();
       var aCallable = require_a_callable();
       var isCallable = require_is_callable();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var anInstance = require_an_instance();
       var inspectSource = require_inspect_source();
       var iterate = require_iterate();
@@ -7455,7 +7465,7 @@
       });
       var isThenable = function(it) {
         var then;
-        return isObject(it) && isCallable(then = it.then) ? then : false;
+        return isObject2(it) && isCallable(then = it.then) ? then : false;
       };
       var notify = function(state, isReject) {
         if (state.notified)
@@ -15995,7 +16005,7 @@
             if (fAddDefaults && out[key2] !== void 0)
               continue;
             var nextVal = obj[key2];
-            if (fDeep && isObject(out[key2]) && isObject(nextVal)) {
+            if (fDeep && isObject2(out[key2]) && isObject2(nextVal)) {
               nextVal = doMerge(fAddDefaults, fDeep, out[key2], nextVal);
             }
             if (nextVal === void 0 || nextVal === out[key2])
@@ -16009,7 +16019,7 @@
         }
         return out;
       }
-      function isObject(o) {
+      function isObject2(o) {
         var type = typeof o === "undefined" ? "undefined" : _typeof(o);
         return o != null && (type === "object" || type === "function");
       }
@@ -16080,7 +16090,7 @@
         if (idx === path.length - 1) {
           newValue = val2;
         } else {
-          var nestedObj = isObject(obj) && isObject(obj[key2]) ? obj[key2] : typeof path[idx + 1] === "number" ? [] : {};
+          var nestedObj = isObject2(obj) && isObject2(obj[key2]) ? obj[key2] : typeof path[idx + 1] === "number" ? [] : {};
           newValue = doSetIn(nestedObj, path, val2, idx + 1);
         }
         return set(obj, key2, newValue);
@@ -17362,14 +17372,14 @@
       });
       exports2.default = void 0;
       var hasOwnProperty = Object.prototype.hasOwnProperty;
-      function is(x, y) {
+      function is2(x, y) {
         if (x === y) {
           return x !== 0 || y !== 0 || 1 / x === 1 / y;
         }
         return x !== x && y !== y;
       }
       function shallowEqual(objA, objB) {
-        if (is(objA, objB)) {
+        if (is2(objA, objB)) {
           return true;
         }
         if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) {
@@ -17381,7 +17391,7 @@
           return false;
         }
         for (let i = 0; i < keysA.length; i++) {
-          if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+          if (!hasOwnProperty.call(objB, keysA[i]) || !is2(objA[keysA[i]], objB[keysA[i]])) {
             return false;
           }
         }
@@ -19168,10 +19178,10 @@
       var assignValue = require_assignValue();
       var castPath = require_castPath();
       var isIndex = require_isIndex();
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var toKey = require_toKey();
       function baseSet(object, path, value2, customizer) {
-        if (!isObject(object)) {
+        if (!isObject2(object)) {
           return object;
         }
         path = castPath(path, object);
@@ -19185,7 +19195,7 @@
             var objValue = nested[key2];
             newValue = customizer ? customizer(objValue, key2, nested) : void 0;
             if (newValue === void 0) {
-              newValue = isObject(objValue) ? objValue : isIndex(path[index2 + 1]) ? [] : {};
+              newValue = isObject2(objValue) ? objValue : isIndex(path[index2 + 1]) ? [] : {};
             }
           }
           assignValue(nested, key2, newValue);
@@ -19256,13 +19266,13 @@
   // node_modules/lodash/_baseKeysIn.js
   var require_baseKeysIn = __commonJS({
     "node_modules/lodash/_baseKeysIn.js"(exports2, module2) {
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var isPrototype = require_isPrototype();
       var nativeKeysIn = require_nativeKeysIn();
       var objectProto = Object.prototype;
       var hasOwnProperty = objectProto.hasOwnProperty;
       function baseKeysIn(object) {
-        if (!isObject(object)) {
+        if (!isObject2(object)) {
           return nativeKeysIn(object);
         }
         var isProto = isPrototype(object), result = [];
@@ -19453,7 +19463,7 @@
   // node_modules/lodash/debounce.js
   var require_debounce = __commonJS({
     "node_modules/lodash/debounce.js"(exports2, module2) {
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var now = require_now();
       var toNumber = require_toNumber();
       var FUNC_ERROR_TEXT = "Expected a function";
@@ -19465,7 +19475,7 @@
           throw new TypeError(FUNC_ERROR_TEXT);
         }
         wait = toNumber(wait) || 0;
-        if (isObject(options)) {
+        if (isObject2(options)) {
           leading = !!options.leading;
           maxing = "maxWait" in options;
           maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
@@ -19548,14 +19558,14 @@
   var require_throttle = __commonJS({
     "node_modules/lodash/throttle.js"(exports2, module2) {
       var debounce = require_debounce();
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var FUNC_ERROR_TEXT = "Expected a function";
       function throttle(func, wait, options) {
         var leading = true, trailing = true;
         if (typeof func != "function") {
           throw new TypeError(FUNC_ERROR_TEXT);
         }
-        if (isObject(options)) {
+        if (isObject2(options)) {
           leading = "leading" in options ? !!options.leading : leading;
           trailing = "trailing" in options ? !!options.trailing : trailing;
         }
@@ -19929,13 +19939,13 @@
   // node_modules/lodash/_baseCreate.js
   var require_baseCreate = __commonJS({
     "node_modules/lodash/_baseCreate.js"(exports2, module2) {
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var objectCreate = Object.create;
       var baseCreate = function() {
         function object() {
         }
         return function(proto) {
-          if (!isObject(proto)) {
+          if (!isObject2(proto)) {
             return {};
           }
           if (objectCreate) {
@@ -22659,7 +22669,7 @@
       var hasOwn = require_has_own_property();
       var isArray = require_is_array();
       var isCallable = require_is_callable();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var isPrototypeOf = require_object_is_prototype_of();
       var isSymbol = require_is_symbol();
       var anObject = require_an_object();
@@ -22924,7 +22934,7 @@
           stringify: function stringify(it, replacer, space) {
             var args = arraySlice(arguments);
             var $replacer = replacer;
-            if (!isObject(replacer) && it === void 0 || isSymbol(it))
+            if (!isObject2(replacer) && it === void 0 || isSymbol(it))
               return;
             if (!isArray(replacer))
               replacer = function(key2, value2) {
@@ -23700,10 +23710,10 @@
   // node_modules/core-js/internals/is-integral-number.js
   var require_is_integral_number = __commonJS({
     "node_modules/core-js/internals/is-integral-number.js"(exports2, module2) {
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var floor = Math.floor;
       module2.exports = Number.isInteger || function isInteger(it) {
-        return !isObject(it) && isFinite(it) && floor(it) === it;
+        return !isObject2(it) && isFinite(it) && floor(it) === it;
       };
     }
   });
@@ -24062,7 +24072,7 @@
       var global2 = require_global();
       var InternalStateModule = require_internal_state();
       var createIteratorConstructor = require_create_iterator_constructor();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var defineProperties = require_object_define_properties();
       var DESCRIPTORS = require_descriptors();
       var INCORRECT_RANGE = "Incorrect Number.range arguments";
@@ -24083,7 +24093,7 @@
         var step;
         if (option === void 0) {
           step = void 0;
-        } else if (isObject(option)) {
+        } else if (isObject2(option)) {
           step = option.step;
           inclusiveEnd = !!option.inclusive;
         } else if (typeof option == type) {
@@ -24951,7 +24961,7 @@
         function graphQLResultHasError(result) {
           return result.errors && result.errors.length;
         }
-        function isEqual(a, b) {
+        function isEqual2(a, b) {
           if (a === b) {
             return true;
           }
@@ -24964,7 +24974,7 @@
                 if (!Object.prototype.hasOwnProperty.call(b, key2)) {
                   return false;
                 }
-                if (!isEqual(a[key2], b[key2])) {
+                if (!isEqual2(a[key2], b[key2])) {
                   return false;
                 }
               }
@@ -25064,7 +25074,7 @@
         exports3.isTest = isTest;
         exports3.tryFunctionOrLogError = tryFunctionOrLogError;
         exports3.graphQLResultHasError = graphQLResultHasError;
-        exports3.isEqual = isEqual;
+        exports3.isEqual = isEqual2;
         exports3.maybeDeepFreeze = maybeDeepFreeze;
         exports3.warnOnceInDevelopment = warnOnceInDevelopment;
         exports3.stripSymbols = stripSymbols;
@@ -29533,7 +29543,7 @@
         function graphQLResultHasError(result) {
           return result.errors && result.errors.length;
         }
-        function isEqual(a, b) {
+        function isEqual2(a, b) {
           if (a === b) {
             return true;
           }
@@ -29546,7 +29556,7 @@
                 if (!Object.prototype.hasOwnProperty.call(b, key2)) {
                   return false;
                 }
-                if (!isEqual(a[key2], b[key2])) {
+                if (!isEqual2(a[key2], b[key2])) {
                   return false;
                 }
               }
@@ -29646,7 +29656,7 @@
         exports3.isTest = isTest;
         exports3.tryFunctionOrLogError = tryFunctionOrLogError;
         exports3.graphQLResultHasError = graphQLResultHasError;
-        exports3.isEqual = isEqual;
+        exports3.isEqual = isEqual2;
         exports3.maybeDeepFreeze = maybeDeepFreeze;
         exports3.warnOnceInDevelopment = warnOnceInDevelopment;
         exports3.stripSymbols = stripSymbols;
@@ -33928,11 +33938,11 @@
         }
         return target;
       }
-      function isObject(obj) {
+      function isObject2(obj) {
         return obj !== null && typeof obj === "object";
       }
       function mergeHelper(target, source, pastCopies) {
-        if (isObject(source) && isObject(target)) {
+        if (isObject2(source) && isObject2(target)) {
           if (Object.isExtensible && !Object.isExtensible(target)) {
             target = shallowCopyForMerge(target, pastCopies);
           }
@@ -36108,11 +36118,11 @@
         }
         return target;
       }
-      function isObject(obj) {
+      function isObject2(obj) {
         return obj !== null && typeof obj === "object";
       }
       function mergeHelper(target, source, pastCopies) {
-        if (isObject(source) && isObject(target)) {
+        if (isObject2(source) && isObject2(target)) {
           if (Object.isExtensible && !Object.isExtensible(target)) {
             target = shallowCopyForMerge(target, pastCopies);
           }
@@ -36926,8 +36936,8 @@
       var isArray = require_isArray();
       var isArrayLikeObject = require_isArrayLikeObject();
       var isBuffer = require_isBuffer();
-      var isFunction = require_isFunction();
-      var isObject = require_isObject();
+      var isFunction2 = require_isFunction();
+      var isObject2 = require_isObject();
       var isPlainObject = require_isPlainObject();
       var isTypedArray = require_isTypedArray();
       var safeGet = require_safeGet();
@@ -36961,7 +36971,7 @@
             newValue = objValue;
             if (isArguments(objValue)) {
               newValue = toPlainObject(objValue);
-            } else if (!isObject(objValue) || isFunction(objValue)) {
+            } else if (!isObject2(objValue) || isFunction2(objValue)) {
               newValue = initCloneObject(srcValue);
             }
           } else {
@@ -36986,7 +36996,7 @@
       var assignMergeValue = require_assignMergeValue();
       var baseFor = require_baseFor();
       var baseMergeDeep = require_baseMergeDeep();
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var keysIn = require_keysIn();
       var safeGet = require_safeGet();
       function baseMerge(object, source, srcIndex, customizer, stack) {
@@ -36995,7 +37005,7 @@
         }
         baseFor(source, function(srcValue, key2) {
           stack || (stack = new Stack());
-          if (isObject(srcValue)) {
+          if (isObject2(srcValue)) {
             baseMergeDeep(object, source, key2, srcIndex, baseMerge, customizer, stack);
           } else {
             var newValue = customizer ? customizer(safeGet(object, key2), srcValue, key2 + "", object, source, stack) : void 0;
@@ -37029,9 +37039,9 @@
       var eq = require_eq();
       var isArrayLike = require_isArrayLike();
       var isIndex = require_isIndex();
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       function isIterateeCall(value2, index2, object) {
-        if (!isObject(object)) {
+        if (!isObject2(object)) {
           return false;
         }
         var type = typeof index2;
@@ -45407,7 +45417,7 @@
         function isArray(input) {
           return input instanceof Array || Object.prototype.toString.call(input) === "[object Array]";
         }
-        function isObject(input) {
+        function isObject2(input) {
           return input != null && Object.prototype.toString.call(input) === "[object Object]";
         }
         function isObjectEmpty(obj) {
@@ -45653,14 +45663,14 @@
         }
         hooks.suppressDeprecationWarnings = false;
         hooks.deprecationHandler = null;
-        function isFunction(input) {
+        function isFunction2(input) {
           return input instanceof Function || Object.prototype.toString.call(input) === "[object Function]";
         }
         function set(config) {
           var prop, i;
           for (i in config) {
             prop = config[i];
-            if (isFunction(prop)) {
+            if (isFunction2(prop)) {
               this[i] = prop;
             } else {
               this["_" + i] = prop;
@@ -45675,7 +45685,7 @@
           var res = extend({}, parentConfig), prop;
           for (prop in childConfig) {
             if (hasOwnProp(childConfig, prop)) {
-              if (isObject(parentConfig[prop]) && isObject(childConfig[prop])) {
+              if (isObject2(parentConfig[prop]) && isObject2(childConfig[prop])) {
                 res[prop] = {};
                 extend(res[prop], parentConfig[prop]);
                 extend(res[prop], childConfig[prop]);
@@ -45687,7 +45697,7 @@
             }
           }
           for (prop in parentConfig) {
-            if (hasOwnProp(parentConfig, prop) && !hasOwnProp(childConfig, prop) && isObject(parentConfig[prop])) {
+            if (hasOwnProp(parentConfig, prop) && !hasOwnProp(childConfig, prop) && isObject2(parentConfig[prop])) {
               res[prop] = extend({}, res[prop]);
             }
           }
@@ -45722,7 +45732,7 @@
         };
         function calendar(key2, mom, now2) {
           var output = this._calendar[key2] || this._calendar["sameElse"];
-          return isFunction(output) ? output.call(mom, now2) : output;
+          return isFunction2(output) ? output.call(mom, now2) : output;
         }
         var defaultLongDateFormat = {
           LTS: "h:mm:ss A",
@@ -45769,11 +45779,11 @@
         };
         function relativeTime(number, withoutSuffix, string, isFuture) {
           var output = this._relativeTime[string];
-          return isFunction(output) ? output(number, withoutSuffix, string, isFuture) : output.replace(/%d/i, number);
+          return isFunction2(output) ? output(number, withoutSuffix, string, isFuture) : output.replace(/%d/i, number);
         }
         function pastFuture(diff2, output) {
           var format2 = this._relativeTime[diff2 > 0 ? "future" : "past"];
-          return isFunction(format2) ? format2(output) : format2.replace(/%s/i, output);
+          return isFunction2(format2) ? format2(output) : format2.replace(/%s/i, output);
         }
         var aliases = {};
         function addUnitAlias(unit, shorthand) {
@@ -45856,7 +45866,7 @@
           return function(mom) {
             var output = "", i2;
             for (i2 = 0; i2 < length2; i2++) {
-              output += isFunction(array[i2]) ? array[i2].call(mom, format2) : array[i2];
+              output += isFunction2(array[i2]) ? array[i2].call(mom, format2) : array[i2];
             }
             return output;
           };
@@ -45901,7 +45911,7 @@
         var matchWord = /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFF07\uFF10-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i;
         var regexes = {};
         function addRegexToken(token2, regex, strictRegex) {
-          regexes[token2] = isFunction(regex) ? regex : function(isStrict, localeData2) {
+          regexes[token2] = isFunction2(regex) ? regex : function(isStrict, localeData2) {
             return isStrict && strictRegex ? strictRegex : regex;
           };
         }
@@ -46019,7 +46029,7 @@
         }
         function stringGet(units) {
           units = normalizeUnits(units);
-          if (isFunction(this[units])) {
+          if (isFunction2(this[units])) {
             return this[units]();
           }
           return this;
@@ -46033,7 +46043,7 @@
             }
           } else {
             units = normalizeUnits(units);
-            if (isFunction(this[units])) {
+            if (isFunction2(this[units])) {
               return this[units](value2);
             }
           }
@@ -47350,7 +47360,7 @@
               return parseInt(obj, 10);
             });
             configFromArray(config);
-          } else if (isObject(input)) {
+          } else if (isObject2(input)) {
             configFromObject(config);
           } else if (isNumber(input)) {
             config._d = new Date(input);
@@ -47364,7 +47374,7 @@
             strict = locale2;
             locale2 = void 0;
           }
-          if (isObject(input) && isObjectEmpty(input) || isArray(input) && input.length === 0) {
+          if (isObject2(input) && isObjectEmpty(input) || isArray(input) && input.length === 0) {
             input = void 0;
           }
           c._isAMomentObject = true;
@@ -47754,7 +47764,7 @@
         }
         function calendar$1(time2, formats) {
           var now2 = time2 || createLocal(), sod = cloneWithOffset(now2, this).startOf("day"), format2 = hooks.calendarFormat(this, sod) || "sameElse";
-          var output = formats && (isFunction(formats[format2]) ? formats[format2].call(this, now2) : formats[format2]);
+          var output = formats && (isFunction2(formats[format2]) ? formats[format2].call(this, now2) : formats[format2]);
           return this.format(output || this.localeData().calendar(format2, this, createLocal(now2)));
         }
         function clone() {
@@ -47873,7 +47883,7 @@
           if (m.year() < 0 || m.year() > 9999) {
             return formatMoment(m, utc ? "YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]" : "YYYYYY-MM-DD[T]HH:mm:ss.SSSZ");
           }
-          if (isFunction(Date.prototype.toISOString)) {
+          if (isFunction2(Date.prototype.toISOString)) {
             if (utc) {
               return this.toDate().toISOString();
             } else {
@@ -50825,10 +50835,8 @@
   var require_lib10 = __commonJS({
     "node_modules/reselect/lib/index.js"(exports2) {
       "use strict";
-      Object.defineProperty(exports2, "__esModule", {
-        value: true
-      });
-      exports2.defaultMemoize = defaultMemoize;
+      exports2.__esModule = true;
+      exports2.defaultMemoize = defaultMemoize2;
       exports2.createSelectorCreator = createSelectorCreator;
       exports2.createSelector = createSelector;
       exports2.createStructuredSelector = createStructuredSelector;
@@ -50844,7 +50852,7 @@
       function defaultEqualityCheck(a, b) {
         return a === b;
       }
-      function defaultMemoize(func) {
+      function defaultMemoize2(func) {
         var equalityCheck = arguments.length <= 1 || arguments[1] === void 0 ? defaultEqualityCheck : arguments[1];
         var lastArgs = null;
         var lastResult = null;
@@ -50852,7 +50860,7 @@
           for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
             args[_key] = arguments[_key];
           }
-          if (lastArgs !== null && args.every(function(value2, index2) {
+          if (lastArgs !== null && lastArgs.length === args.length && args.every(function(value2, index2) {
             return equalityCheck(value2, lastArgs[index2]);
           })) {
             return lastResult;
@@ -50874,7 +50882,7 @@
         }
         return dependencies;
       }
-      function createSelectorCreator(memoize) {
+      function createSelectorCreator(memoize2) {
         for (var _len2 = arguments.length, memoizeOptions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
           memoizeOptions[_key2 - 1] = arguments[_key2];
         }
@@ -50885,7 +50893,7 @@
           var recomputations = 0;
           var resultFunc = funcs.pop();
           var dependencies = getDependencies(funcs);
-          var memoizedResultFunc = memoize.apply(void 0, [function() {
+          var memoizedResultFunc = memoize2.apply(void 0, [function() {
             recomputations++;
             return resultFunc.apply(void 0, arguments);
           }].concat(memoizeOptions));
@@ -50901,11 +50909,14 @@
           selector.recomputations = function() {
             return recomputations;
           };
+          selector.resetRecomputations = function() {
+            return recomputations = 0;
+          };
           return selector;
         };
       }
       function createSelector() {
-        return createSelectorCreator(defaultMemoize).apply(void 0, arguments);
+        return createSelectorCreator(defaultMemoize2).apply(void 0, arguments);
       }
       function createStructuredSelector(selectors) {
         var selectorCreator = arguments.length <= 1 || arguments[1] === void 0 ? createSelector : arguments[1];
@@ -51587,34 +51598,34 @@
       var baseGetTag = require_baseGetTag();
       var isObjectLike = require_isObjectLike();
       var boolTag = "[object Boolean]";
-      function isBoolean(value2) {
+      function isBoolean2(value2) {
         return value2 === true || value2 === false || isObjectLike(value2) && baseGetTag(value2) == boolTag;
       }
-      module2.exports = isBoolean;
+      module2.exports = isBoolean2;
     }
   });
 
-  // packages/utilities/memo/index.js
-  var require_memo = __commonJS({
-    "packages/utilities/memo/index.js"(exports2) {
-      "use strict";
-      var _interopRequireDefault = require_interopRequireDefault().default;
-      Object.defineProperty(exports2, "__esModule", {
-        value: true
-      });
-      exports2.weakMemo = exports2.singleMemo = exports2.once = exports2.memoize = exports2.isEqual = exports2.cacheMemo = void 0;
-      var _reselect = require_lib10();
-      var _lruCache = _interopRequireDefault(require_lru_cache());
-      var _isBoolean = _interopRequireDefault(require_isBoolean());
-      var _isFunction = _interopRequireDefault(require_isFunction());
-      var _isObject = _interopRequireDefault(require_isObject());
-      var True = {
-        "@webflow/Boolean": true
-      };
-      var False = {
-        "@webflow/Boolean": false
-      };
-      var is = (valueA, valueB) => {
+  // packages/utilities/memo/index.ts
+  var memo_exports = {};
+  __export(memo_exports, {
+    cacheMemo: () => cacheMemo,
+    isEqual: () => isEqual,
+    memoize: () => memoize,
+    once: () => once,
+    singleMemo: () => singleMemo,
+    weakMemo: () => weakMemo
+  });
+  var import_reselect, import_lru_cache, import_isBoolean, import_isFunction, import_isObject, True, False, is, isEqual, memoize, weakMemo, cacheMemo, defaultLastArg, singleMemo, once;
+  var init_memo = __esm({
+    "packages/utilities/memo/index.ts"() {
+      import_reselect = __toESM(require_lib10());
+      import_lru_cache = __toESM(require_lru_cache());
+      import_isBoolean = __toESM(require_isBoolean());
+      import_isFunction = __toESM(require_isFunction());
+      import_isObject = __toESM(require_isObject());
+      True = { "@webflow/Boolean": true };
+      False = { "@webflow/Boolean": false };
+      is = (valueA, valueB) => {
         if (valueA === valueB || valueA !== valueA && valueB !== valueB) {
           return true;
         }
@@ -51636,7 +51647,7 @@
         }
         return false;
       };
-      var isEqual = (a, b) => {
+      isEqual = (a, b) => {
         if (is(a, b)) {
           return true;
         }
@@ -51650,19 +51661,22 @@
         }
         return Object.keys(a).length === Object.keys(b).length;
       };
-      exports2.isEqual = isEqual;
-      var memoize = (fn) => (0, _reselect.defaultMemoize)(fn, isEqual);
-      exports2.memoize = memoize;
-      var weakMemo = (fn) => {
+      memoize = (fn) => (0, import_reselect.defaultMemoize)(fn, isEqual);
+      weakMemo = (fn) => {
         if (false) {
-          if (!(0, _isFunction.default)(fn)) {
-            console.error(`Expected a function as argument to weakMemo but got ${fn}.`);
+          if (!isFunction(fn)) {
+            console.error(
+              `Expected a function as argument to weakMemo but got ${fn}.`
+            );
           }
         }
         const map = /* @__PURE__ */ new WeakMap();
         const memFn = (arg) => {
-          if (!(0, _isObject.default)(arg) && !(0, _isBoolean.default)(arg)) {
-            throw new TypeError(`weakMemo: Expected an object or boolean as an argument to ${memFn.displayName} but got ${String(arg)}`);
+          if (!(0, import_isObject.default)(arg) && !(0, import_isBoolean.default)(arg)) {
+            throw new TypeError(
+              `weakMemo: Expected an object or boolean as an argument to ${// @ts-expect-error - TS2339 - Property 'displayName' does not exist on type 'F'.
+              memFn.displayName} but got ${String(arg)}`
+            );
           }
           const key2 = typeof arg === "boolean" ? arg && True || False : arg;
           if (!map.has(key2)) {
@@ -51672,14 +51686,14 @@
           return result;
         };
         if (false) {
-          memFn.displayName = "weakMemo(" + (fn.displayName || fn.name || fn.toString()) + ")";
+          memFn.displayName = // @ts-expect-error - TS2339 - Property 'displayName' does not exist on type 'F'. | TS2339 - Property 'name' does not exist on type 'F'. | TS2339 - Property 'toString' does not exist on type 'F'.
+          "weakMemo(" + (fn.displayName || fn.name || fn.toString()) + ")";
         }
         return memFn;
       };
-      exports2.weakMemo = weakMemo;
-      var cacheMemo = (depth) => {
+      cacheMemo = (depth) => {
         const memoizeFn = (fn) => {
-          const cache = new _lruCache.default({
+          const cache = new import_lru_cache.default({
             max: depth
           });
           return function(arg) {
@@ -51691,9 +51705,8 @@
         };
         return memoizeFn;
       };
-      exports2.cacheMemo = cacheMemo;
-      var defaultLastArg = Symbol();
-      var singleMemo = (fn) => {
+      defaultLastArg = Symbol();
+      singleMemo = (fn) => {
         let lastArg = defaultLastArg;
         let lastResult;
         return (arg) => {
@@ -51704,8 +51717,7 @@
           return lastResult;
         };
       };
-      exports2.singleMemo = singleMemo;
-      var once = (fn) => {
+      once = (fn) => {
         let result;
         return () => {
           if (fn) {
@@ -51715,7 +51727,6 @@
           return result;
         };
       };
-      exports2.once = once;
     }
   });
 
@@ -51733,7 +51744,7 @@
       var _DynamoConditionUtils = require_DynamoConditionUtils();
       var _momentTimezone = _interopRequireDefault(require_moment_timezone2());
       var _SlugUtils = require_SlugUtils2();
-      var _memo = require_memo();
+      var _memo = (init_memo(), __toCommonJS(memo_exports));
       var _ParamFieldPathUtils = require_ParamFieldPathUtils2();
       var _constants = (init_constants(), __toCommonJS(constants_exports));
       var _FilterUtils = require_FilterUtils2();
@@ -52367,7 +52378,7 @@
         function isArray(obj) {
           return nativeIsArray ? nativeIsArray(obj) : toString.call(obj) === "[object Array]";
         }
-        function isObject(obj) {
+        function isObject2(obj) {
           return obj && toString.call(obj) === "[object Object]";
         }
         function defaults(object, defs) {
@@ -52445,7 +52456,7 @@
           }
           number = unformat(number);
           var opts = defaults(
-            isObject(precision) ? precision : {
+            isObject2(precision) ? precision : {
               precision,
               thousand,
               decimal
@@ -52462,7 +52473,7 @@
           }
           number = unformat(number);
           var opts = defaults(
-            isObject(symbol) ? symbol : {
+            isObject2(symbol) ? symbol : {
               symbol,
               precision,
               thousand,
@@ -52477,7 +52488,7 @@
           if (!list)
             return [];
           var opts = defaults(
-            isObject(symbol) ? symbol : {
+            isObject2(symbol) ? symbol : {
               symbol,
               precision,
               thousand,
@@ -53198,7 +53209,7 @@
       var isArray = require_isArray();
       var isBuffer = require_isBuffer();
       var isMap = require_isMap();
-      var isObject = require_isObject();
+      var isObject2 = require_isObject();
       var isSet = require_isSet();
       var keys = require_keys();
       var keysIn = require_keysIn();
@@ -53242,7 +53253,7 @@
         if (result !== void 0) {
           return result;
         }
-        if (!isObject(value2)) {
+        if (!isObject2(value2)) {
           return value2;
         }
         var isArr = isArray(value2);
@@ -53321,8 +53332,8 @@
       var getPrototype = require_getPrototype();
       var isArray = require_isArray();
       var isBuffer = require_isBuffer();
-      var isFunction = require_isFunction();
-      var isObject = require_isObject();
+      var isFunction2 = require_isFunction();
+      var isObject2 = require_isObject();
       var isTypedArray = require_isTypedArray();
       function transform2(object, iteratee, accumulator) {
         var isArr = isArray(object), isArrLike = isArr || isBuffer(object) || isTypedArray(object);
@@ -53331,8 +53342,8 @@
           var Ctor = object && object.constructor;
           if (isArrLike) {
             accumulator = isArr ? new Ctor() : [];
-          } else if (isObject(object)) {
-            accumulator = isFunction(Ctor) ? baseCreate(getPrototype(object)) : {};
+          } else if (isObject2(object)) {
+            accumulator = isFunction2(Ctor) ? baseCreate(getPrototype(object)) : {};
           } else {
             accumulator = {};
           }
@@ -54398,7 +54409,7 @@
       var bind2 = require_function_bind_context();
       var classof = require_classof();
       var anObject = require_an_object();
-      var isObject = require_is_object();
+      var isObject2 = require_is_object();
       var $toString = require_to_string();
       var create2 = require_object_create();
       var createPropertyDescriptor = require_create_property_descriptor();
@@ -54523,7 +54534,7 @@
           updateSearchParams
         });
         if (init !== void 0) {
-          if (isObject(init)) {
+          if (isObject2(init)) {
             iteratorMethod = getIteratorMethod(init);
             if (iteratorMethod) {
               iterator = getIterator(init, iteratorMethod);
@@ -54692,7 +54703,7 @@
         headersHas = uncurryThis(HeadersPrototype.has);
         headersSet = uncurryThis(HeadersPrototype.set);
         wrapRequestOptions = function(init) {
-          if (isObject(init)) {
+          if (isObject2(init)) {
             var body = init.body;
             var headers;
             if (classof(body) === URL_SEARCH_PARAMS) {
@@ -62346,258 +62357,6 @@
     }
   });
 
-  // shared/render/plugins/Tabs/webflow-tabs.js
-  var require_webflow_tabs = __commonJS({
-    "shared/render/plugins/Tabs/webflow-tabs.js"(exports2, module2) {
-      var Webflow = require_webflow_lib();
-      var IXEvents = require_webflow_ix2_events();
-      Webflow.define("tabs", module2.exports = function($2) {
-        var api = {};
-        var tram = $2.tram;
-        var $doc = $2(document);
-        var $tabs;
-        var design;
-        var env = Webflow.env;
-        var safari = env.safari;
-        var inApp = env();
-        var tabAttr = "data-w-tab";
-        var paneAttr = "data-w-pane";
-        var namespace = ".w-tabs";
-        var linkCurrent = "w--current";
-        var tabActive = "w--tab-active";
-        var ix = IXEvents.triggers;
-        var inRedraw = false;
-        api.ready = api.design = api.preview = init;
-        api.redraw = function() {
-          inRedraw = true;
-          init();
-          inRedraw = false;
-        };
-        api.destroy = function() {
-          $tabs = $doc.find(namespace);
-          if (!$tabs.length) {
-            return;
-          }
-          $tabs.each(resetIX);
-          removeListeners();
-        };
-        function init() {
-          design = inApp && Webflow.env("design");
-          $tabs = $doc.find(namespace);
-          if (!$tabs.length) {
-            return;
-          }
-          $tabs.each(build);
-          if (Webflow.env("preview") && !inRedraw) {
-            $tabs.each(resetIX);
-          }
-          removeListeners();
-          addListeners();
-        }
-        function removeListeners() {
-          Webflow.redraw.off(api.redraw);
-        }
-        function addListeners() {
-          Webflow.redraw.on(api.redraw);
-        }
-        function resetIX(i, el) {
-          var data2 = $2.data(el, namespace);
-          if (!data2) {
-            return;
-          }
-          data2.links && data2.links.each(ix.reset);
-          data2.panes && data2.panes.each(ix.reset);
-        }
-        function build(i, el) {
-          var widgetHash = namespace.substr(1) + "-" + i;
-          var $el = $2(el);
-          var data2 = $2.data(el, namespace);
-          if (!data2) {
-            data2 = $2.data(el, namespace, {
-              el: $el,
-              config: {}
-            });
-          }
-          data2.current = null;
-          data2.tabIdentifier = widgetHash + "-" + tabAttr;
-          data2.paneIdentifier = widgetHash + "-" + paneAttr;
-          data2.menu = $el.children(".w-tab-menu");
-          data2.links = data2.menu.children(".w-tab-link");
-          data2.content = $el.children(".w-tab-content");
-          data2.panes = data2.content.children(".w-tab-pane");
-          data2.el.off(namespace);
-          data2.links.off(namespace);
-          data2.menu.attr("role", "tablist");
-          data2.links.attr("tabindex", "-1");
-          configure(data2);
-          if (!design) {
-            data2.links.on("click" + namespace, linkSelect(data2));
-            data2.links.on("keydown" + namespace, handleLinkKeydown(data2));
-            var $link = data2.links.filter("." + linkCurrent);
-            var tab = $link.attr(tabAttr);
-            tab && changeTab(data2, {
-              tab,
-              immediate: true
-            });
-          }
-        }
-        function configure(data2) {
-          var config = {};
-          config.easing = data2.el.attr("data-easing") || "ease";
-          var intro = parseInt(data2.el.attr("data-duration-in"), 10);
-          intro = config.intro = intro === intro ? intro : 0;
-          var outro = parseInt(data2.el.attr("data-duration-out"), 10);
-          outro = config.outro = outro === outro ? outro : 0;
-          config.immediate = !intro && !outro;
-          data2.config = config;
-        }
-        function getActiveTabIdx(data2) {
-          var tab = data2.current;
-          return Array.prototype.findIndex.call(data2.links, (t) => {
-            return t.getAttribute(tabAttr) === tab;
-          }, null);
-        }
-        function linkSelect(data2) {
-          return function(evt) {
-            evt.preventDefault();
-            var tab = evt.currentTarget.getAttribute(tabAttr);
-            tab && changeTab(data2, {
-              tab
-            });
-          };
-        }
-        function handleLinkKeydown(data2) {
-          return function(evt) {
-            var currentIdx = getActiveTabIdx(data2);
-            var keyName = evt.key;
-            var keyMap = {
-              ArrowLeft: currentIdx - 1,
-              ArrowUp: currentIdx - 1,
-              ArrowRight: currentIdx + 1,
-              ArrowDown: currentIdx + 1,
-              End: data2.links.length - 1,
-              Home: 0
-            };
-            if (!(keyName in keyMap))
-              return;
-            evt.preventDefault();
-            var nextIdx = keyMap[keyName];
-            if (nextIdx === -1) {
-              nextIdx = data2.links.length - 1;
-            }
-            if (nextIdx === data2.links.length) {
-              nextIdx = 0;
-            }
-            var tabEl = data2.links[nextIdx];
-            var tab = tabEl.getAttribute(tabAttr);
-            tab && changeTab(data2, {
-              tab
-            });
-          };
-        }
-        function changeTab(data2, options) {
-          options = options || {};
-          var config = data2.config;
-          var easing = config.easing;
-          var tab = options.tab;
-          if (tab === data2.current) {
-            return;
-          }
-          data2.current = tab;
-          var currentTab;
-          data2.links.each(function(i, el) {
-            var $el = $2(el);
-            if (options.immediate || config.immediate) {
-              var pane = data2.panes[i];
-              if (!el.id) {
-                el.id = data2.tabIdentifier + "-" + i;
-              }
-              if (!pane.id) {
-                pane.id = data2.paneIdentifier + "-" + i;
-              }
-              el.href = "#" + pane.id;
-              el.setAttribute("role", "tab");
-              el.setAttribute("aria-controls", pane.id);
-              el.setAttribute("aria-selected", "false");
-              pane.setAttribute("role", "tabpanel");
-              pane.setAttribute("aria-labelledby", el.id);
-            }
-            if (el.getAttribute(tabAttr) === tab) {
-              currentTab = el;
-              $el.addClass(linkCurrent).removeAttr("tabindex").attr({
-                "aria-selected": "true"
-              }).each(ix.intro);
-            } else if ($el.hasClass(linkCurrent)) {
-              $el.removeClass(linkCurrent).attr({
-                tabindex: "-1",
-                "aria-selected": "false"
-              }).each(ix.outro);
-            }
-          });
-          var targets = [];
-          var previous = [];
-          data2.panes.each(function(i, el) {
-            var $el = $2(el);
-            if (el.getAttribute(tabAttr) === tab) {
-              targets.push(el);
-            } else if ($el.hasClass(tabActive)) {
-              previous.push(el);
-            }
-          });
-          var $targets = $2(targets);
-          var $previous = $2(previous);
-          if (options.immediate || config.immediate) {
-            $targets.addClass(tabActive).each(ix.intro);
-            $previous.removeClass(tabActive);
-            if (!inRedraw) {
-              Webflow.redraw.up();
-            }
-            return;
-          } else {
-            var x = window.scrollX;
-            var y = window.scrollY;
-            currentTab.focus();
-            window.scrollTo(x, y);
-          }
-          if ($previous.length && config.outro) {
-            $previous.each(ix.outro);
-            tram($previous).add("opacity " + config.outro + "ms " + easing, {
-              fallback: safari
-            }).start({
-              opacity: 0
-            }).then(() => fadeIn(config, $previous, $targets));
-          } else {
-            fadeIn(config, $previous, $targets);
-          }
-        }
-        function fadeIn(config, $previous, $targets) {
-          $previous.removeClass(tabActive).css({
-            opacity: "",
-            transition: "",
-            transform: "",
-            width: "",
-            height: ""
-          });
-          $targets.addClass(tabActive).each(ix.intro);
-          Webflow.redraw.up();
-          if (!config.intro) {
-            return tram($targets).set({
-              opacity: 1
-            });
-          }
-          tram($targets).set({
-            opacity: 0
-          }).redraw().add("opacity " + config.intro + "ms " + config.easing, {
-            fallback: safari
-          }).start({
-            opacity: 1
-          });
-        }
-        return api;
-      });
-    }
-  });
-
   // <stdin>
   require_webflow_lottie();
   require_webflow_brand();
@@ -62612,7 +62371,6 @@
   require_webflow_dropdown();
   require_webflow_forms();
   require_webflow_slider();
-  require_webflow_tabs();
 })();
 /*!
  * tram.js v0.8.2-global
@@ -62761,5 +62519,5 @@ accounting/accounting.js:
  * Webflow: Interactions 2.0: Init
  */
 Webflow.require('ix2').init(
-{"events":{"e":{"id":"e","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-2"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".c-extra_checkbox","originalId":"64b96980cddd4168db3af61f|adb5ef9c-3b20-4c01-dc45-f9fd2a5bfb84","appliesTo":"CLASS"},"targets":[{"selector":".c-extra_checkbox","originalId":"64b96980cddd4168db3af61f|adb5ef9c-3b20-4c01-dc45-f9fd2a5bfb84","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1642471518553},"e-2":{"id":"e-2","name":"","animationType":"custom","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-2","affectedElements":{},"playInReverse":false,"autoStopEventId":"e"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".c-extra_checkbox","originalId":"64b96980cddd4168db3af61f|adb5ef9c-3b20-4c01-dc45-f9fd2a5bfb84","appliesTo":"CLASS"},"targets":[{"selector":".c-extra_checkbox","originalId":"64b96980cddd4168db3af61f|adb5ef9c-3b20-4c01-dc45-f9fd2a5bfb84","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1642471518554},"e-3":{"id":"e-3","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-3","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-4"}},"mediaQueries":["small","tiny"],"target":{"id":"64b96980cddd4168db3af61f|98fe34f5-4973-4c21-5975-e25731d803d9","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af61f|98fe34f5-4973-4c21-5975-e25731d803d9","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1642643004528},"e-5":{"id":"e-5","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-4","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-6"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af61f|7e97dfea-7927-29a7-60f9-16939fc450d8","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af61f|7e97dfea-7927-29a7-60f9-16939fc450d8","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1642643498987},"e-7":{"id":"e-7","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-5","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-8"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af61f|4226928c-d88f-8ab4-6d73-1d4293ec2690","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af61f|4226928c-d88f-8ab4-6d73-1d4293ec2690","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1642813363691},"e-9":{"id":"e-9","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-6","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-10"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686504551755},"e-10":{"id":"e-10","name":"","animationType":"custom","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-9","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-9"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686504551755},"e-11":{"id":"e-11","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-7","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-12"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|6d86a85e-44d9-4d0b-7cfb-690ce7a12070","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|6d86a85e-44d9-4d0b-7cfb-690ce7a12070","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686504688108},"e-12":{"id":"e-12","name":"","animationType":"custom","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-7","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-11"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|6d86a85e-44d9-4d0b-7cfb-690ce7a12070","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|6d86a85e-44d9-4d0b-7cfb-690ce7a12070","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686504688108},"e-13":{"id":"e-13","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-8","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-14"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|ba725738-e42d-6cfe-4467-ddfd44b7cbd7","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|ba725738-e42d-6cfe-4467-ddfd44b7cbd7","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686505913897},"e-15":{"id":"e-15","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-10","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-16"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|b6be31a3-8426-79d7-69a6-8176c7b8c97d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|b6be31a3-8426-79d7-69a6-8176c7b8c97d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686507198159},"e-17":{"id":"e-17","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-11","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-18"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686507311353}},"actionLists":{"a":{"id":"a","title":"Extra checkbox - On","actionItemGroups":[{"actionItems":[{"id":"a-n","actionTypeId":"PLUGIN_LOTTIE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"SIBLINGS","selector":".c-checkbox_lottie","selectorGuids":["c9c80018-90c0-7dd2-8fba-fc7ca521289f"]},"value":0}}]},{"actionItems":[{"id":"a-n-2","actionTypeId":"PLUGIN_LOTTIE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"SIBLINGS","selector":".c-checkbox_lottie","selectorGuids":["c9c80018-90c0-7dd2-8fba-fc7ca521289f"]},"value":47}}]}],"useFirstGroupAsInitialState":true,"createdOn":1642471528547},"a-2":{"id":"a-2","title":"Extra checkbox - Off","actionItemGroups":[{"actionItems":[{"id":"a-2-n","actionTypeId":"PLUGIN_LOTTIE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"SIBLINGS","selector":".c-checkbox_lottie","selectorGuids":["c9c80018-90c0-7dd2-8fba-fc7ca521289f"]},"value":0}}]}],"useFirstGroupAsInitialState":false,"createdOn":1642471528547},"a-3":{"id":"a-3","title":"Open Filters","actionItemGroups":[{"actionItems":[{"id":"a-3-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"selector":".c-col.cc-1","selectorGuids":["a0933965-c87b-fb29-9bab-38b828d577eb","5c7e7a3f-650b-1945-ed47-3011a6e1e209"]},"yValue":-100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-3-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":500,"target":{"selector":".c-col.cc-1","selectorGuids":["a0933965-c87b-fb29-9bab-38b828d577eb","5c7e7a3f-650b-1945-ed47-3011a6e1e209"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1642643009122},"a-4":{"id":"a-4","title":"Close Filters","actionItemGroups":[{"actionItems":[{"id":"a-4-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":500,"target":{"selector":".c-col.cc-1","selectorGuids":["a0933965-c87b-fb29-9bab-38b828d577eb","5c7e7a3f-650b-1945-ed47-3011a6e1e209"]},"yValue":-100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1642643009122},"a-5":{"id":"a-5","title":"Switcher Off","actionItemGroups":[{"actionItems":[{"id":"a-5-n-2","actionTypeId":"PLUGIN_LOTTIE","config":{"delay":0,"easing":"","duration":500,"target":{"selector":".c-checkbox_lottie","selectorGuids":["c9c80018-90c0-7dd2-8fba-fc7ca521289f"]},"value":0}}]}],"useFirstGroupAsInitialState":false,"createdOn":1642813367069},"a-6":{"id":"a-6","title":"Tex_01","actionItemGroups":[{"actionItems":[{"id":"a-6-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"inline-block"}},{"id":"a-6-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"none"}},{"id":"a-6-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"none"}},{"id":"a-6-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"none"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1686504597531},"a-9":{"id":"a-9","title":"New Timed Animation","actionItemGroups":[{"actionItems":[{"id":"a-9-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"inline-block"}}]},{"actionItems":[{"id":"a-9-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"none"}}]},{"actionItems":[{"id":"a-9-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"none"}}]},{"actionItems":[{"id":"a-9-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"none"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686506085642},"a-7":{"id":"a-7","title":"Tex_02","actionItemGroups":[{"actionItems":[{"id":"a-7-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"none"}}]},{"actionItems":[{"id":"a-7-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"inline-block"}}]},{"actionItems":[{"id":"a-7-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"none"}}]},{"actionItems":[{"id":"a-7-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"none"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686504696044},"a-8":{"id":"a-8","title":"Tex_03","actionItemGroups":[{"actionItems":[{"id":"a-8-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"none"}}]},{"actionItems":[{"id":"a-8-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"none"}}]},{"actionItems":[{"id":"a-8-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"inline-block"}}]},{"actionItems":[{"id":"a-8-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"none"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686505921762},"a-10":{"id":"a-10","title":"Tex_04","actionItemGroups":[{"actionItems":[{"id":"a-10-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"none"}}]},{"actionItems":[{"id":"a-10-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"none"}}]},{"actionItems":[{"id":"a-10-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"none"}}]},{"actionItems":[{"id":"a-10-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"inline-block"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686507212756},"a-11":{"id":"a-11","title":"Color","actionItemGroups":[{"actionItems":[{"id":"a-11-n","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":true,"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d"},"globalSwatchId":"","rValue":0,"bValue":255,"gValue":5,"aValue":1}}]},{"actionItems":[{"id":"a-11-n-2","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"selector":".text-block-4","selectorGuids":["197af252-ebb2-6ed4-45e6-ec8df02c16ac"]},"globalSwatchId":"","rValue":255,"bValue":255,"gValue":255,"aValue":1}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686507327648}},"site":{"mediaQueries":[{"key":"main","min":992,"max":10000},{"key":"medium","min":768,"max":991},{"key":"small","min":480,"max":767},{"key":"tiny","min":0,"max":479}]}}
+{"events":{"e":{"id":"e","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-2"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".c-extra_checkbox","originalId":"64b96980cddd4168db3af61f|adb5ef9c-3b20-4c01-dc45-f9fd2a5bfb84","appliesTo":"CLASS"},"targets":[{"selector":".c-extra_checkbox","originalId":"64b96980cddd4168db3af61f|adb5ef9c-3b20-4c01-dc45-f9fd2a5bfb84","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1642471518553},"e-2":{"id":"e-2","name":"","animationType":"custom","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-2","affectedElements":{},"playInReverse":false,"autoStopEventId":"e"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".c-extra_checkbox","originalId":"64b96980cddd4168db3af61f|adb5ef9c-3b20-4c01-dc45-f9fd2a5bfb84","appliesTo":"CLASS"},"targets":[{"selector":".c-extra_checkbox","originalId":"64b96980cddd4168db3af61f|adb5ef9c-3b20-4c01-dc45-f9fd2a5bfb84","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1642471518554},"e-9":{"id":"e-9","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-6","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-10"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686504551755},"e-10":{"id":"e-10","name":"","animationType":"custom","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-9","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-9"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686504551755},"e-11":{"id":"e-11","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-7","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-12"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|6d86a85e-44d9-4d0b-7cfb-690ce7a12070","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|6d86a85e-44d9-4d0b-7cfb-690ce7a12070","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686504688108},"e-12":{"id":"e-12","name":"","animationType":"custom","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-7","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-11"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|6d86a85e-44d9-4d0b-7cfb-690ce7a12070","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|6d86a85e-44d9-4d0b-7cfb-690ce7a12070","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686504688108},"e-13":{"id":"e-13","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-8","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-14"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|ba725738-e42d-6cfe-4467-ddfd44b7cbd7","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|ba725738-e42d-6cfe-4467-ddfd44b7cbd7","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686505913897},"e-15":{"id":"e-15","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-10","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-16"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|b6be31a3-8426-79d7-69a6-8176c7b8c97d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|b6be31a3-8426-79d7-69a6-8176c7b8c97d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686507198159},"e-17":{"id":"e-17","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-11","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-18"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1686507311353}},"actionLists":{"a":{"id":"a","title":"Extra checkbox - On","actionItemGroups":[{"actionItems":[{"id":"a-n","actionTypeId":"PLUGIN_LOTTIE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"SIBLINGS","selector":".c-checkbox_lottie","selectorGuids":["c9c80018-90c0-7dd2-8fba-fc7ca521289f"]},"value":0}}]},{"actionItems":[{"id":"a-n-2","actionTypeId":"PLUGIN_LOTTIE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"SIBLINGS","selector":".c-checkbox_lottie","selectorGuids":["c9c80018-90c0-7dd2-8fba-fc7ca521289f"]},"value":47}}]}],"useFirstGroupAsInitialState":true,"createdOn":1642471528547},"a-2":{"id":"a-2","title":"Extra checkbox - Off","actionItemGroups":[{"actionItems":[{"id":"a-2-n","actionTypeId":"PLUGIN_LOTTIE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"SIBLINGS","selector":".c-checkbox_lottie","selectorGuids":["c9c80018-90c0-7dd2-8fba-fc7ca521289f"]},"value":0}}]}],"useFirstGroupAsInitialState":false,"createdOn":1642471528547},"a-6":{"id":"a-6","title":"Tex_01","actionItemGroups":[{"actionItems":[{"id":"a-6-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"inline-block"}},{"id":"a-6-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"none"}},{"id":"a-6-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"none"}},{"id":"a-6-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"none"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1686504597531},"a-9":{"id":"a-9","title":"New Timed Animation","actionItemGroups":[{"actionItems":[{"id":"a-9-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"inline-block"}}]},{"actionItems":[{"id":"a-9-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"none"}}]},{"actionItems":[{"id":"a-9-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"none"}}]},{"actionItems":[{"id":"a-9-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"none"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686506085642},"a-7":{"id":"a-7","title":"Tex_02","actionItemGroups":[{"actionItems":[{"id":"a-7-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"none"}}]},{"actionItems":[{"id":"a-7-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"inline-block"}}]},{"actionItems":[{"id":"a-7-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"none"}}]},{"actionItems":[{"id":"a-7-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"none"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686504696044},"a-8":{"id":"a-8","title":"Tex_03","actionItemGroups":[{"actionItems":[{"id":"a-8-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"none"}}]},{"actionItems":[{"id":"a-8-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"none"}}]},{"actionItems":[{"id":"a-8-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"inline-block"}}]},{"actionItems":[{"id":"a-8-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"none"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686505921762},"a-10":{"id":"a-10","title":"Tex_04","actionItemGroups":[{"actionItems":[{"id":"a-10-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|c1fb5927-b89e-7bc6-7d20-e938e7d4832f"},"value":"none"}}]},{"actionItems":[{"id":"a-10-n-2","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|a5e2c76b-d741-6fc6-5f8f-4bd57237b791"},"value":"none"}}]},{"actionItems":[{"id":"a-10-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|75242530-9047-820a-e495-8b239c9e46fa"},"value":"none"}}]},{"actionItems":[{"id":"a-10-n-4","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"64b96980cddd4168db3af618|80296515-bbaf-441d-1736-31c590e8bb35"},"value":"inline-block"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686507212756},"a-11":{"id":"a-11","title":"Color","actionItemGroups":[{"actionItems":[{"id":"a-11-n","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":true,"id":"64b96980cddd4168db3af618|42265c77-6247-dbd4-c613-cf02b6cfe80d"},"globalSwatchId":"","rValue":0,"bValue":255,"gValue":5,"aValue":1}}]},{"actionItems":[{"id":"a-11-n-2","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"selector":".text-block-4","selectorGuids":["197af252-ebb2-6ed4-45e6-ec8df02c16ac"]},"globalSwatchId":"","rValue":255,"bValue":255,"gValue":255,"aValue":1}}]}],"useFirstGroupAsInitialState":false,"createdOn":1686507327648}},"site":{"mediaQueries":[{"key":"main","min":992,"max":10000},{"key":"medium","min":768,"max":991},{"key":"small","min":480,"max":767},{"key":"tiny","min":0,"max":479}]}}
 );

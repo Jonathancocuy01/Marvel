@@ -1,48 +1,3 @@
-.w-checkbox {
-  margin-bottom: 5px;
-  padding-left: 20px;
-  display: block;
-}
-
-.w-checkbox:before {
-  content: " ";
-  grid-area: 1 / 1 / 2 / 2;
-  display: table;
-}
-
-.w-checkbox:after {
-  content: " ";
-  clear: both;
-  grid-area: 1 / 1 / 2 / 2;
-  display: table;
-}
-
-.w-checkbox-input {
-  float: left;
-  margin: 4px 0 0 -20px;
-  line-height: normal;
-}
-
-.w-checkbox-input--inputType-custom {
-  width: 12px;
-  height: 12px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-}
-
-.w-checkbox-input--inputType-custom.w--redirected-checked {
-  background-color: #3898ec;
-  background-image: url('https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-color: #3898ec;
-}
-
-.w-checkbox-input--inputType-custom.w--redirected-focus {
-  box-shadow: 0 0 3px 1px #3898ec;
-}
-
 .w-commerce-commercecheckoutformcontainer {
   width: 100%;
   min-height: 100vh;
@@ -811,6 +766,51 @@
   padding: 10px 16px;
 }
 
+.w-checkbox {
+  margin-bottom: 5px;
+  padding-left: 20px;
+  display: block;
+}
+
+.w-checkbox:before {
+  content: " ";
+  grid-area: 1 / 1 / 2 / 2;
+  display: table;
+}
+
+.w-checkbox:after {
+  content: " ";
+  clear: both;
+  grid-area: 1 / 1 / 2 / 2;
+  display: table;
+}
+
+.w-checkbox-input {
+  float: left;
+  margin: 4px 0 0 -20px;
+  line-height: normal;
+}
+
+.w-checkbox-input--inputType-custom {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.w-checkbox-input--inputType-custom.w--redirected-checked {
+  background-color: #3898ec;
+  background-image: url('https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-color: #3898ec;
+}
+
+.w-checkbox-input--inputType-custom.w--redirected-focus {
+  box-shadow: 0 0 3px 1px #3898ec;
+}
+
 .w-commerce-commerceaddtocartform {
   margin: 0 0 15px;
 }
@@ -1173,22 +1173,6 @@
   padding: 10px;
 }
 
-.w-form-formradioinput--inputType-custom {
-  width: 12px;
-  height: 12px;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-}
-
-.w-form-formradioinput--inputType-custom.w--redirected-focus {
-  box-shadow: 0 0 3px 1px #3898ec;
-}
-
-.w-form-formradioinput--inputType-custom.w--redirected-checked {
-  border-width: 4px;
-  border-color: #3898ec;
-}
-
 .w-commerce-commerceorderconfirmationcontainer {
   width: 100%;
   min-height: 100vh;
@@ -1354,12 +1338,14 @@ p {
 }
 
 .c-card_content {
+  background-color: rgba(0, 0, 0, 0);
   border-bottom: 1px solid rgba(0, 0, 0, .1);
   padding: 23px;
 }
 
 .c-card_price {
   color: #7545ff;
+  border-radius: 0;
   margin-bottom: 0;
   font-weight: 600;
   display: flex;
@@ -1377,16 +1363,16 @@ p {
   margin-right: 5px;
 }
 
-.c-title-3 {
-  color: #0a0616;
+.c-precio {
+  color: #2e0cf5;
   font-size: 28px;
 }
 
-.c-title-3.cc-euros {
+.c-precio.cc-euros {
   margin-left: 0;
 }
 
-.c-title-3.c-tittle-2 {
+.c-precio.c_tittle-2 {
   color: #0116f7;
 }
 
@@ -1442,7 +1428,7 @@ p {
   margin-bottom: 20px;
 }
 
-.c-filtro.cc-search {
+.c-filtro.cc_search {
   display: flex;
 }
 
@@ -1712,7 +1698,7 @@ p {
   max-width: 50%;
 }
 
-.c-search_input {
+.c_search_input {
   height: 45px;
   background-image: url('../images/buscar.png');
   background-position: 95%;
@@ -1724,7 +1710,7 @@ p {
   padding-right: 40px;
 }
 
-.c-search_input:focus {
+.c_search_input:focus {
   border: 1px solid #4870fe;
   border-bottom-color: #7545ff;
 }
@@ -1911,17 +1897,17 @@ p {
   display: flex;
 }
 
-.c-title-4 {
+.c_marca {
   color: #0a0616;
   font-size: 3.5vh;
   line-height: 30px;
 }
 
-.c-title-4.cc-euros {
+.c_marca.cc-euros {
   margin-left: 0;
 }
 
-.c-title-4.c-tittle-2 {
+.c_marca.c-tittle-2 {
   color: #0116f7;
 }
 
@@ -2635,7 +2621,7 @@ p {
     flex-direction: column;
   }
 
-  .c-filtro.cc-search {
+  .c-filtro.cc_search {
     flex-direction: column-reverse;
   }
 
@@ -2652,7 +2638,7 @@ p {
     align-items: flex-start;
   }
 
-  .c-search_input {
+  .c_search_input {
     margin-top: 20px;
     margin-right: 0;
   }
