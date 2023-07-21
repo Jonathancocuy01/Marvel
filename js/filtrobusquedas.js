@@ -7,7 +7,7 @@ d.addEventListener("keyup", e => {
         d.querySelectorAll(selector).forEach(el => 
             el.textContent.toLowerCase().includes(e.target.value.toLowerCase())
             ? el.classList.remove("filter")
-            : el.classList.add("filter")
+            : el.classList.add("filter-")
         );
     }
 });
